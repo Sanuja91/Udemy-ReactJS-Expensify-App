@@ -25,16 +25,13 @@ module.exports = {
         // Runs through files ending with css
         test: /\.s?css$/,
         // Use allows us to use an array of loaders
-        use: [
-            'style-loader',
-            'css-loader',
-            'sass-loader'
-        ]
+        use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   },
   devtool: "cheap-module-eval-source-map",
   devServer: {
-    contentBase: path.join(currentLoc, "public")
+    contentBase: path.join(currentLoc, "public"),
+    historyApiFallback: true
   }
 }
