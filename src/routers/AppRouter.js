@@ -5,22 +5,9 @@ import ExpenseDashboardPage from "../components/ExpenseDashboardPage"
 import EditExpensePage from "../components/EditExpensePage"
 import HelpPage from "../components/HelpPage"
 import NotFoundPage from "../components/NotFoundPage"
+import Header from "../components/Header"
 
-// Header with titel and Navigation
-const Header = () => (
-  <header>
-    <h1>Expensify</h1>
-    <NavLink to="/" activeClassName="is-active" exact={true}>
-      Dashboard
-    </NavLink>
-    <NavLink to="/create" activeClassName="is-active" exact={true}>
-      Create Expense
-    </NavLink>
-    <NavLink to="/help" activeClassName="is-active" exact={true}>
-      Help
-    </NavLink>
-  </header>
-)
+
 
 // Pages for the website
 // Header added for every page
