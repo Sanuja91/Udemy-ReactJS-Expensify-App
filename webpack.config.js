@@ -5,7 +5,7 @@ const currentLoc = __dirname
 
 // Where the application kick off - entry?
 module.exports = {
-  entry: "./src/playground/destructuring.js",
+  entry: "./src/playground/redux-101.js",
   // Where to output the final bundle file?
   output: {
     path: path.join(currentLoc, "public"),
