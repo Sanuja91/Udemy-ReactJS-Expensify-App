@@ -16,9 +16,6 @@ const Header = () => (
     <NavLink to="/create" activeClassName="is-active" exact={true}>
       Create Expense
     </NavLink>
-    <NavLink to="/edit" activeClassName="is-active" exact={true}>
-      Edit Expense
-    </NavLink>
     <NavLink to="/help" activeClassName="is-active" exact={true}>
       Help
     </NavLink>
@@ -34,7 +31,7 @@ const AppRouter = () => (
       <Switch>
         <Route path="/" component={ExpenseDashboardPage} exact={true} />
         <Route path="/create" component={AddExpensePage} />
-        <Route path="/edit" component={EditExpensePage} />
+        <Route path="/edit/:id" component={EditExpensePage} />
         <Route path="/help" component={HelpPage} />
         <Route component={NotFoundPage} />
       </Switch>
