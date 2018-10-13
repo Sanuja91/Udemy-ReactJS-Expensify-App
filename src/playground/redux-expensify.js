@@ -25,7 +25,16 @@ const removeExpense = ({ id }) => ({
 })
 
 // EDIT_EXPENSE
+const editExpense = (id, updates) => ({
+  type: "EDIT_EXPENSE",
+  id,
+  updates
+})
 // SET_TEXT_FILTER
+const setTextFilter = (text = "") => ({
+  type: "SET_TEXT_FILTER",
+  text
+})
 // SORT_BY_DATE
 // SORT_BY_AMOUNT
 // SET_START_DATE
@@ -44,6 +53,13 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
         return id !== action.expense.id
       })
 
+    // Uses SPREAD OBJECT OPERATORS to clone object then edit it
+    case "EDIT_EXPENSE":
+      return state.map(expense => {
+        if (expense.id === action.id) {
+          return { ...expense, ...action.updates }
+        } else return expense
+      })
     default:
       return state
   }
@@ -58,6 +74,9 @@ const filtersReducerDefaultState = {
 }
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
+    // Uses SPREAD OBJECT OPERATORS to clone object then edit it
+    case "SET_TEXT_FILTER":
+      return { ...state, text: action.text }
     default:
       return state
   }
@@ -73,7 +92,7 @@ const store = createStore(
 )
 
 const unsubscribe = store.subscribe(() => {
-  console.log(store.getState())
+  console.log("STATE UPDATE", store.getState())
 })
 
 const expenseOne = store.dispatch(
@@ -84,6 +103,8 @@ const expenseTwo = store.dispatch(
 )
 
 store.dispatch(removeExpense({ id: expenseOne.expense.id }))
+store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 }))
+store.dispatch(setTextFilter("rent"))
 
 const demoState = {
   expenses: [
@@ -102,3 +123,16 @@ const demoState = {
     endDate: undefined
   }
 }
+
+// EXAMPLE - OBJECT SPREAD OPERATOR
+const user = {
+  name: "Jen",
+  age: 24
+}
+
+// Spread Operator for Objects
+console.log({
+  ...user,
+  location: "Philadelphia",
+  age: 27
+})
